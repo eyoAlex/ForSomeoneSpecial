@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll to Explore – Locked Line</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+    background: #222;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+
+  .loading {
+    font-size: 2rem;
+    opacity: 1;
+    transition: opacity 1s ease;
+    position: absolute;
+    z-index: 100;
+  }
+
+  .fade-grey {
+    background-color: #d3d3d3;
+    transition: background-color 2s ease;
+  }
+
+  .scroll-container {
+    opacity: 0;
+    transition: opacity 2s ease;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    padding: 10vh 10vw;
+  }
+
+  .item {
+    font-size: 2rem;
+    color: #888;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.4s ease;
+    text-align: left;
+  }
+
+  .active {
+    color: #cd137E;
+    font-size: 5rem;
+    font-weight: bold;
+  }
+
+  /* Random button */
+  .random-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 60px;
+    background: rgba(255, 255, 255, 0.6);
+    color: #000;
+    border: 2px solid rgba(255,255,255,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.3s ease, opacity 1s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    opacity: 0; /* hidden initially */
+    pointer-events: none; /* not clickable until shown */
+  }
+
+  .random-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .random-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+</head>
+<body>
+  <div id="loading" class="loading">Some Secrets...</div>
+
+  <div id="main" class="scroll-container">
+    <div class="item">Scroll to explore</div>
+    <div class="item">I like how you always tell me what you like and don’t like.</div>
+    <div class="item">I like how you ask if I am okay with everything, because you don’t want to upset me.</div>
+    <div class="item">I like how you get nervous when you want to tell me something utterly romantic &lt;3.</div>
+    <div class="item">I like how you squeak and hide in your blanket whenever you’re red.</div>
+    <div class="item">I like how you share almost everything with me, even if it’s you backshotting someone.</div>
+    <div class="item">I like how you have so many activities to do, and that you’re so talented.</div>
+    <div class="item">I like how you can always make my day, even if it’s a short call in the morning.</div>
+    <div class="item">I like how you understand me so well.</div>
+    <div class="item">I like how you act dumb even though it’s clear you did something.</div>
+    <div class="item">I like how you make me not want to lose you, because I cherish you so much.</div>
+    <div class="item">I like how you can accept me as I am, though I am no way near perfect.</div>
+    <div class="item">I like how you always say you’re okay when I comfort you.</div>
+    <div class="item">I like how you tear up when you feel loved, makes me want to love you more.</div>
+    <div class="item">I like how you always over-think everything because it shows that you care.</div>
+    <div class="item">I like how you worry a lot about everything.</div>
+    <div class="item">I like how you get scared from horror movies and want me to be with you.</div>
+    <div class="item">I like how you say I plan a lot beforehand, you do more.</div>
+    <div class="item">I like how you plan so many romantic things for us.</div>
+    <div class="item">I like how you imagine doing things with me and blushing.</div>
+    <div class="item">I like how you confessed and I didn’t understand because you hid it so well.</div>
+    <div class="item">I like how time flies so fast when I'm with you because it's so fun.</div>
+    <div class="item">I like how you sometimes smile during your sleep, must mean you’re dreaming of something :)</div>
+    <div class="item">I like that you make gifts for me, they are so sweet.</div>
+    <div class="item">I like that you wake up early just to see me.</div>
+    <div class="item">I like that you laugh at every single thing I say, even if it’s a very bad joke.</div>
+    <div class="item">I like the way you try to not answer my question by telling me to answer first.</div>
+    <div class="item">I like the way you show that you care about me, it makes me fall in love.</div>
+    <div class="item">I like the way you remember lots of tiny things I do, and tell me what it means to you.</div>
+    <div class="item">I like the way you blush when I kiss you.</div>
+    <div class="item">I like the way you laugh and your eyes almost close.</div>
+    <div class="item">I like the way you try to stop your smile and it makes it look so cute.</div>
+    <div class="item">I like the way you look, how you look so pretty no matter what time of day.</div>
+    <div class="item">I like the way you barely have your eyes open and not want to go back to sleep even though you still do.</div>
+    <div class="item">I like the way you instantly fall asleep after I kiss you goodnight.</div>
+    <div class="item">I like the way you say you don’t look good, even though you totally do.</div>
+    <div class="item">I like the way your skin reflects the sunlight when you wake.</div>
+    <div class="item">I like the way you boom awake from your alarm and instantly go back to sleep.</div>
+    <div class="item">I like the way your face gets very red from my rizz.</div>
+    <div class="item">I like the way you squeak but you say you’re just stretching.</div>
+    <div class="item">I like the way you flip around in bed.</div>
+    <div class="item">I like the way you comfort me when you think I’m not doing well.</div>
+    <div class="item">I like the way you always ask if I am okay, though I always am.</div>
+    <div class="item">I like the way you tell me to tell you everything, good and bad. It makes me feel like home.</div>
+    <div class="item">I like your smile, it’s so perfect.</div>
+    <div class="item">I like your humor, it always makes me laugh.</div>
+    <div class="item">I like your eyes, how they are so beautiful and how I lose myself in them.</div>
+    <div class="item">I like your curled hair because it adds to your charm.</div>
+    <div class="item">I like your super long texts because they show me a lot about how you feel about something.</div>
+    <div class="item">I like your art, it is so unique.</div>
+    <div class="item">I think there’s going to be much more in the future.</div>
+  </div>
+
+  <div id="randomBtn" class="random-btn">Random!</div>
+
+<script>
+  const body = document.body;
+  const loading = document.getElementById("loading");
+  const main = document.getElementById("main");
+  const items = document.querySelectorAll(".item");
+  const randomBtn = document.getElementById("randomBtn");
+  let currentIndex = 0;
+  let isLocked = false;
+  let scrollTimeout;
+
+  // Startup animation
+  setTimeout(() => {
+    loading.style.opacity = "0";
+    body.classList.add("fade-grey");
+    setTimeout(() => {
+      loading.remove();
+      main.style.opacity = "1";
+      randomBtn.classList.add("visible"); // fade in after loading
+      updateActive();
+    }, 1500);
+  }, 2000);
+
+  function scrollToIndex(index) {
+    if (index < 0) index = 0;
+    if (index >= items.length) index = items.length - 1;
+    items[index].scrollIntoView({ behavior: "smooth", block: "center" });
+    updateActive(index);
+    currentIndex = index;
+  }
+
+  function updateActive(index = currentIndex) {
+    items.forEach((item) => item.classList.remove("active"));
+    items[index].classList.add("active");
+  }
+
+  function handleScroll(deltaY) {
+    if (isLocked) return;
+    isLocked = true;
+    if (deltaY > 0) scrollToIndex(currentIndex + 1);
+    else if (deltaY < 0) scrollToIndex(currentIndex - 1);
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isLocked = false; // unlock after user stops scrolling completely
+    }, 1000);
+  }
+
+  window.addEventListener("wheel", (e) => handleScroll(e.deltaY), { passive: false });
+
+  // Optional: arrow key control
+  window.addEventListener("keydown", (e) => {
+    if (isLocked) return;
+    if (e.key === "ArrowDown") handleScroll(1);
+    if (e.key === "ArrowUp") handleScroll(-1);
+  });
+  
+
+  // Random button
+  randomBtn.addEventListener("click", () => {
+    const randomIndex = Math.floor(Math.random() * items.length);
+    scrollToIndex(randomIndex);
+  });
+
+  // Magnet effect
+  window.addEventListener("mousemove", (e) => {
+    const rect = randomBtn.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const maxDistance = 200;
+    if (distance < maxDistance) {
+      const pull = (maxDistance - distance) / maxDistance;
+      randomBtn.style.transform = `translate(${dx * 0.25 * pull}px, ${dy * 0.25 * pull}px) scale(1.05)`;
+    } else randomBtn.style.transform = "translate(0,0) scale(1)";
+  });
+</script>
+</body>
+</html>
