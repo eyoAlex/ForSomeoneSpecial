@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Liquid Glass Login</title>
+<style>
+  :root {
+    --bg: #2a2a2e;
+    --accent: #0271E4;
+    --border: #d1d1d6;
+    --text: #f9f9fa;
+    --placeholder: #a1a1a3;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Glass box */
+  .glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-radius: 20px;
+    width: 400px;
+    padding: 40px 28px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+  }
+
+  h2 {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    color: var(--text);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  /* Input container */
+  .field {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  input[type="password"] {
+    width: 100%;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0 14px;
+    font-size: 16px;
+    color: #111;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+  }
+
+  input:focus {
+    border-color: var(--accent);
+  }
+
+  label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--placeholder);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    font-weight: 400;
+  }
+
+  /* Apple-style floating label (stays inside the box) */
+  input:focus + label,
+  .has-text label {
+    font-size: 12px;
+    top: 28%;
+    color: var(--accent);
+  }
+
+  /* Button */
+  button {
+    margin-top: 25px;
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    background: #555;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: not-allowed;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    font-family: inherit;
+  }
+
+  button.active {
+    background: var(--accent);
+    cursor: pointer;
+  }
+
+  button.active:hover {
+    box-shadow: 0 4px 12px rgba(2, 113, 228, 0.3);
+  }
+</style>
+</head>
+<body>
+
+<div class="glass">
+  <h2>Login</h2>
+  <div class="field">
+    <input type="password" id="password" required />
+    <label for="password">Password</label>
+  </div>
+  <button id="loginBtn">Continue</button>
+</div>
+
+<script>
+  const input = document.getElementById("password");
+  const btn = document.getElementById("loginBtn");
+  const correct = "ashleycbb";
+
+  input.addEventListener("input", () => {
+    input.parentElement.classList.toggle("has-text", input.value.length > 0);
+    if (input.value.length > 0) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+
+  btn.addEventListener("click", () => {
+    if (!btn.classList.contains("active")) return;
+    if (input.value === correct) {
+      // Redirect
+      window.location.href = "https://www.youtube.com/watch?v=BT4WzyT2g8k";
+    } else {
+      alert("Incorrect password.");
+    }
+  });
+</script>
+
+</body>
+</html>
